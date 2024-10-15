@@ -1,0 +1,398 @@
+/* Global styling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body style */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #89CFF0, #F5F5F5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+    animation: backgroundAnimation 10s infinite alternate;
+}
+
+/* Background animation */
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(135deg, #89CFF0, #F5F5F5);
+    }
+    100% {
+        background: linear-gradient(135deg, #FFB6C1, #D3CCE3);
+    }
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #333;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Scrollbar track */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; /* Scrollbar color */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color when hovering */
+}
+
+/* Firefox scrollbar styles */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #888 rgba(0, 0, 0, 0.1);
+}
+
+/* Grid container */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Default: 4 columns */
+    grid-gap: 15px;
+    width: 100%;
+    max-width: 1200px;
+    height: 80vh;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+}
+
+/* Responsive grid layout */
+@media (max-width: 1400px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1000px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Grid item (card) style */
+.grid-item {
+    background-color: #ffffff;
+    border-radius: 12px; /* Reduce border radius for minimal look */
+    padding: 20px; /* Reduced padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1); /* Slightly reduced shadow */
+    text-align: center;
+    height: 120px; /* Reduced card height */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.grid-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.1));
+    z-index: -1;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+}
+
+.grid-item h2 {
+    font-size: 1.3rem; /* Slightly smaller font */
+    color: #333;
+    font-weight: 500;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.grid-item:hover::before {
+    opacity: 1;
+}
+
+.grid-item:hover h2 {
+    color: #007BFF;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #333;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.modal-body {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.close {
+    color: #999;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* Neumorphism */
+.neumorphic-sample {
+    background: #f8f8f8;
+    border-radius: 20px;
+    width: 200px;
+    height: 150px;
+    box-shadow: inset 5px 5px 12px #8d8d8d,
+            inset -8px -8px 12px #ffffff;
+}
+
+/* Glassmorphism */
+.glassmorphic-sample {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    width: 200px;
+    height: 150px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Claymorphism */
+.claymorphic-sample {
+    background-color: #ffcc00;
+    border-radius: 20px;
+    width: 200px;
+    height: 150px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.5), 8px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Fluidmorphism */
+.fluidmorphic-sample {
+    background: linear-gradient(135deg, #f06, #4a90e2);
+    border-radius: 50%;
+    width: 200px;
+    height: 150px;
+    animation: flow 4s infinite alternate ease-in-out;
+}
+
+@keyframes flow {
+    0% { border-radius: 50%; }
+    100% { border-radius: 30%; }
+}
+
+/* Skeuomorphism */
+.skeuomorphic-sample {
+    background: url('wood-texture.jpg'); /* Add a texture image */
+    border-radius: 10px;
+    width: 200px;
+    height: 150px;
+    box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.metamorphic-sample {
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+    width: 200px;
+    height: 150px;
+    border-radius: 50%;
+    animation: metamorph 5s infinite alternate;
+}
+
+@keyframes metamorph {
+    0% {
+        border-radius: 50%;
+    }
+    100% {
+        border-radius: 0%;
+    }
+}
+
+.aurorism-sample {
+    background: linear-gradient(135deg, #9b59b6, #e74c3c, #f1c40f);
+    border-radius: 20px;
+    width: 200px;
+    height: 150px;
+    animation: aurora 3s infinite alternate ease-in-out;
+}
+
+@keyframes aurora {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.gradientmorphic-sample {
+    background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
+    border-radius: 15px;
+    width: 200px;
+    height: 150px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.blurmorphic-sample {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    width: 200px;
+    height: 150px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.texturism-sample {
+    background: url('fabric-texture.jpg'); /* Use a relevant texture image */
+    border-radius: 10px;
+    width: 200px;
+    height: 150px;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.holographism-sample {
+    background: linear-gradient(135deg, #ff00ff, #00ffff, #ff0000);
+    border-radius: 15px;
+    width: 200px;
+    height: 150px;
+    background-size: 300% 300%;
+    animation: holograph 4s ease infinite;
+}
+
+@keyframes holograph {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.shadowmorphic-sample {
+    background: #fff;
+    border-radius: 20px;
+    width: 200px;
+    height: 150px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2), -10px -10px 20px rgba(255, 255, 255, 0.6);
+}
+
+.plasticmorphic-sample {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    width: 200px;
+    height: 150px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.paperism-sample {
+    background: #fffdfa;
+    border-radius: 10px;
+    width: 200px;
+    height: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+.retroism-sample {
+    background: linear-gradient(45deg, #ffcc00, #ff0066, #00ff66);
+    width: 200px;
+    height: 150px;
+    border-radius: 0;
+    box-shadow: 4px 4px 0px #333;
+    font-family: 'Courier New', monospace;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.organism-sample {
+    background: radial-gradient(circle, #ff9966, #ff5e62);
+    border-radius: 50%;
+    width: 200px;
+    height: 150px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.threedmorphic-sample {
+    background: #fff;
+    border-radius: 20px;
+    width: 200px;
+    height: 150px;
+    box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.3);
+    transform: perspective(500px) rotateY(15deg);
+}
